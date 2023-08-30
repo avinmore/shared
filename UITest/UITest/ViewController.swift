@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
-
+    
     fileprivate func configureHeroBadgeView() {
         self.view.backgroundColor = .red
         badgeViewStackView.backgroundColor = .green
@@ -119,7 +119,101 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureHeroBadgeView()        
+        configureHeroBadgeView()
+        
+        setupUI()
     }
+    
+    
+    
+    ///TItle info
+    
+    private lazy var verticalStackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.axis = .vertical
+            stackView.spacing = 8
+            return stackView
+        }()
+        
+        private lazy var roomTitleLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Room Title"
+            label.textColor = .black
+            label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            return label
+        }()
+        
+        private lazy var bottomContentView: UIView = {
+            let view = UIView()
+            view.backgroundColor = .lightGray
+            return view
+        }()
+        
+        private lazy var avatarImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = UIImage(named: "star.fill") // Replace with your avatar image
+            imageView.contentMode = .scaleAspectFit
+            return imageView
+        }()
+        
+        private lazy var labelsStackView: UIStackView = {
+            let stackView = UIStackView()
+            stackView.distribution = .fillProportionally
+            stackView.alignment = .leading
+            stackView.axis = .horizontal // Set horizontal axis
+            stackView.spacing = 8 // Adjust spacing as needed
+            return stackView
+        }()
+        
+        private lazy var seasonNameLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Season 1"
+            label.textColor = .black
+            label.font = UIFont.systemFont(ofSize: 14)
+            label.setContentHuggingPriority(.required, for: .horizontal)
+            label.setContentCompressionResistancePriority(.required, for: .horizontal)
+            return label
+        }()
+        
+        private lazy var episodeLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Episode 3"
+            label.textColor = .black
+            label.font = UIFont.systemFont(ofSize: 14)
+            return label
+        }()
+     
+        private func setupUI() {
+            self.view.backgroundColor = .white
+            
+            self.view.addSubview(verticalStackView)
+            
+            verticalStackView.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.leading.trailing.equalToSuperview().inset(16)
+            }
+            
+            verticalStackView.addArrangedSubview(roomTitleLabel)
+            
+            bottomContentView.addSubview(avatarImageView)
+            bottomContentView.addSubview(labelsStackView)
+            
+            labelsStackView.addArrangedSubview(seasonNameLabel)
+            labelsStackView.addArrangedSubview(episodeLabel)
+            
+            verticalStackView.addArrangedSubview(bottomContentView)
+            
+            avatarImageView.snp.makeConstraints { make in
+                make.width.height.equalTo(16)
+                make.leading.centerY.equalToSuperview()
+            }
+            
+            labelsStackView.snp.makeConstraints { make in
+                make.leading.equalTo(avatarImageView.snp.trailing).offset(8)
+                make.trailing.equalToSuperview()
+                make.top.bottom.equalToSuperview().inset(4) // Add top and bottom insets
+            }
+        }
+    ///TItle info
+    
 }
-
