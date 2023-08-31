@@ -54,6 +54,19 @@ class ViewController: UIViewController {
         return label
     }()
     
+    private lazy var progressBar: UIProgressView = {
+           let progressView = UIProgressView()
+           progressView.progress = 0.5 // 50% progress
+           progressView.tintColor = .blue
+           progressView.progressTintColor = .blue
+           progressView.trackTintColor = .clear
+           
+           // Remove corner radius from right side
+           progressView.layer.cornerRadius = 3
+           progressView.clipsToBounds = true
+           return progressView
+       }()
+    
     fileprivate func configureHeroBadgeView() {
         self.view.backgroundColor = .red
         badgeViewStackView.backgroundColor = .green
@@ -115,6 +128,14 @@ class ViewController: UIViewController {
             make.trailing.equalToSuperview()
             make.top.bottom.equalToSuperview()
         }
+        
+        self.view.addSubview(progressBar)
+                
+                progressBar.snp.makeConstraints { make in
+                    make.leading.trailing.equalToSuperview().inset(16)
+                    make.center.equalToSuperview().offset(50)
+                    make.height.equalTo(6)
+                }
     }
     
     override func viewDidLoad() {
