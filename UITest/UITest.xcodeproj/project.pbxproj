@@ -18,6 +18,7 @@
 		BC4269552A9E32450048CA12 /* UITestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4269542A9E32450048CA12 /* UITestTests.swift */; };
 		BC42695F2A9E32450048CA12 /* UITestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42695E2A9E32450048CA12 /* UITestUITests.swift */; };
 		BC4269612A9E32450048CA12 /* UITestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4269602A9E32450048CA12 /* UITestUITestsLaunchTests.swift */; };
+		BCDEF8132ABFFFF200BFD251 /* FPSTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEF8122ABFFFF200BFD251 /* FPSTest.swift */; };
 		E0D655F217FC0691399EAF3A /* Pods_UITest_UITestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535977F792864E517491C9E4 /* Pods_UITest_UITestUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		BC42695E2A9E32450048CA12 /* UITestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUITests.swift; sourceTree = "<group>"; };
 		BC4269602A9E32450048CA12 /* UITestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BC49F955040AA64B25FADF17 /* Pods_UITest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCDEF8122ABFFFF200BFD251 /* FPSTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSTest.swift; sourceTree = "<group>"; };
 		CB045AAF98BF0A4944439232 /* Pods-UITest-UITestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITest-UITestUITests.release.xcconfig"; path = "Target Support Files/Pods-UITest-UITestUITests/Pods-UITest-UITestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CF0F6F5036D9BF6570C32DD1 /* Pods-UITestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITestTests.release.xcconfig"; path = "Target Support Files/Pods-UITestTests/Pods-UITestTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAA72DCB96287568DF437A1D /* Pods-UITest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITest.debug.xcconfig"; path = "Target Support Files/Pods-UITest/Pods-UITest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				BC4269482A9E32450048CA12 /* LaunchScreen.storyboard */,
 				BC42694B2A9E32450048CA12 /* Info.plist */,
 				BC4269432A9E32450048CA12 /* UITest.xcdatamodeld */,
+				BCDEF8122ABFFFF200BFD251 /* FPSTest.swift */,
 			);
 			path = UITest;
 			sourceTree = "<group>";
@@ -164,7 +167,6 @@
 				ABC14D984068A9BA44145027 /* Pods-UITestTests.debug.xcconfig */,
 				CF0F6F5036D9BF6570C32DD1 /* Pods-UITestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -408,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC42693F2A9E32450048CA12 /* ViewController.swift in Sources */,
+				BCDEF8132ABFFFF200BFD251 /* FPSTest.swift in Sources */,
 				BC4269452A9E32450048CA12 /* UITest.xcdatamodeld in Sources */,
 				BC42693B2A9E32450048CA12 /* AppDelegate.swift in Sources */,
 			);

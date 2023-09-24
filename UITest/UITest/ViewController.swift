@@ -30,7 +30,28 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        
+        let gradientLayer = CAGradientLayer()
+                
+                // Set the frame of the gradient layer to match the view's bounds
+                gradientLayer.frame = view.bounds
+                
+                // Define the colors for the gradient (black to clear)
+                let startColor = UIColor.black.cgColor
+                let endColor = UIColor.clear.cgColor
+                gradientLayer.colors = [startColor, endColor]
+                
+                // Specify the gradient direction (horizontal)
+                gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+                gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+                
+                // Add the gradient layer to your view's layer
+                view.layer.addSublayer(gradientLayer)
+                
+        
+        
+        
+        //setupUI()
     }
     
     private func setupUI() {
