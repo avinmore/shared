@@ -81,3 +81,92 @@ class ViewController: UIViewController {
         }
     }
 }
+
+
+/*
+ protocol DataStorage {
+    func saveData(_ data: Data)
+    func loadData() -> Data?
+}
+
+class FileManagerDataStorage: DataStorage {
+    private let fileName = "data.txt"
+
+    func saveData(_ data: Data) {
+        if let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName) {
+            do {
+                try data.write(to: filePath)
+            } catch {
+                print("Error saving data: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func loadData() -> Data? {
+        if let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName) {
+            do {
+                let data = try Data(contentsOf: filePath)
+                return data
+            } catch {
+                print("Error loading data: \(error.localizedDescription)")
+            }
+        }
+        return nil
+    }
+}
+*/
+
+
+/*
+protocol DataStorage {
+    func saveData<T: Codable>(_ data: T, to file: String)
+    func loadData<T: Codable>(from file: String) -> T?
+}
+
+class FileManagerDataStorage: DataStorage {
+    private let fileManager = FileManager.default
+
+    func saveData<T: Codable>(_ data: T, to file: String) {
+        do {
+            let encodedData = try JSONEncoder().encode(data)
+            if let filePath = fileURL(for: file) {
+                try encodedData.write(to: filePath, options: .atomic)
+            }
+        } catch {
+            print("Error saving data: \(error.localizedDescription)")
+        }
+    }
+
+    func loadData<T: Codable>(from file: String) -> T? {
+        if let filePath = fileURL(for: file), fileManager.fileExists(atPath: filePath.path) {
+            do {
+                let data = try Data(contentsOf: filePath)
+                let decodedData = try JSONDecoder().decode(T.self, from: data)
+                return decodedData
+            } catch {
+                print("Error loading data: \(error.localizedDescription)")
+            }
+        }
+        return nil
+    }
+
+    private func fileURL(for file: String) -> URL? {
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        return documentsDirectory?.appendingPathComponent(file)
+    }
+}
+ 
+*/
+//
+//func saveData(_ data: Data) {
+//    let queue = DispatchQueue(label: "com.example.dataStorageQueue", attributes: .concurrent)
+//    queue.async(flags: .barrier) {
+//        if let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(fileName) {
+//            do {
+//                try data.write(to: filePath, options: .atomic)
+//            } catch {
+//                print("Error saving data: \(error.localizedDescription)")
+//            }
+//        }
+//    }
+//}
