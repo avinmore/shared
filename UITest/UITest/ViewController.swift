@@ -170,3 +170,127 @@ class FileManagerDataStorage: DataStorage {
 //        }
 //    }
 //}
+
+
+
+/*
+import Foundation
+import Moya
+
+extension Moya.Response {
+
+    func toCurlString() -> String {
+        var curlString = "curl -X \(self.request?.httpMethod ?? "GET") '\(self.request?.url?.absoluteString ?? "")'"
+
+        // Add headers
+        if let headers = self.request?.allHTTPHeaderFields {
+            for (key, value) in headers {
+                curlString += " -H '\(key): \(value)'"
+            }
+        }
+
+        // Add body data if present
+        if let bodyData = self.request?.httpBody, let bodyString = String(data: bodyData, encoding: .utf8) {
+            curlString += " -d '\(bodyString)'"
+        }
+
+        return curlString
+    }
+}
+
+// Example usage:
+let response = Moya.Response(statusCode: 200, data: Data(), request: URLRequest(url: URL(string: "https://example.com")!), response: nil)
+
+let curlString = response.toCurlString()
+print(curlString)
+
+ 
+ 
+ struct CurlInfo {
+     let request: Moya.Request
+     let response: Moya.Response
+ }
+ 
+    
+ 
+ import SwiftUI
+
+ struct ContentView: View {
+     let curlInfos: [CurlInfo] // Populate this with your CurlInfo objects
+     
+     var body: some View {
+         NavigationView {
+             List(curlInfos, id: \.self) { curlInfo in
+                 NavigationLink(destination: CurlDetail(curlInfo: curlInfo)) {
+                     Text(curlInfo.request.url?.absoluteString ?? "Unknown URL")
+                 }
+             }
+             .navigationTitle("Curl List")
+         }
+     }
+ }
+ 
+ import SwiftUI
+
+ struct CurlDetail: View {
+     let curlInfo: CurlInfo
+     
+     var body: some View {
+         VStack {
+             Text(curlInfo.response.toCurlString())
+                 .padding()
+             if let responseData = curlInfo.response.data,
+                let responseString = String(data: responseData, encoding: .utf8) {
+                 Text(responseString)
+                     .padding()
+             } else {
+                 Text("No response data")
+                     .padding()
+             }
+         }
+         .navigationTitle("Curl Detail")
+     }
+ }
+ 
+ 
+ 
+ import SwiftUI
+
+ struct ContentView: View {
+     @State private var curlInfos: [CurlInfo] // Use @State for mutable state
+     let maxCurlInfosCount = 100
+     let userDefaultsKey = "StoredCurlInfos"
+     
+     init() {
+         // Load curlInfos from UserDefaults when the view is initialized
+         if let data = UserDefaults.standard.data(forKey: userDefaultsKey),
+            let savedCurlInfos = try? JSONDecoder().decode([CurlInfo].self, from: data) {
+             _curlInfos = State(initialValue: savedCurlInfos)
+         } else {
+             _curlInfos = State(initialValue: [])
+         }
+     }
+     
+     var body: some View {
+         NavigationView {
+             List(curlInfos.prefix(maxCurlInfosCount), id: \.self) { curlInfo in
+                 NavigationLink(destination: CurlDetail(curlInfo: curlInfo)) {
+                     Text(curlInfo.request.url?.absoluteString ?? "Unknown URL")
+                 }
+             }
+             .navigationTitle("Curl List")
+         }
+         .onDisappear {
+             saveCurlInfosToUserDefaults()
+         }
+     }
+     
+     private func saveCurlInfosToUserDefaults() {
+         if let data = try? JSONEncoder().encode(curlInfos) {
+             UserDefaults.standard.set(data, forKey: userDefaultsKey)
+         }
+     }
+ }
+
+*/
+
