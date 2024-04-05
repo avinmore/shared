@@ -294,3 +294,33 @@ print(curlString)
 
 */
 
+
+
+/**
+ 
+ private func addNewCurlInfo(_ newCurlInfo: CurlInfo) {
+     DispatchQueue.global(qos: .background).async {
+         var updatedCurlInfos = self.loadCurlInfosFromUserDefaults()
+         updatedCurlInfos.append(newCurlInfo)
+         self.saveCurlInfosToUserDefaults(updatedCurlInfos)
+     }
+ }
+
+ private func loadCurlInfosFromUserDefaults() -> [CurlInfo] {
+     guard let data = UserDefaults.standard.data(forKey: userDefaultsKey),
+           let savedCurlInfos = try? JSONDecoder().decode([CurlInfo].self, from: data) else {
+         return []
+     }
+     return savedCurlInfos
+ }
+
+ private func saveCurlInfosToUserDefaults(_ curlInfos: [CurlInfo]) {
+     do {
+         let data = try JSONEncoder().encode(curlInfos)
+         UserDefaults.standard.set(data, forKey: userDefaultsKey)
+     } catch {
+         print("Error encoding and saving curlInfos: \(error.localizedDescription)")
+     }
+ }
+
+ */
