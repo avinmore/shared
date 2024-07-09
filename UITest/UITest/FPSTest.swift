@@ -114,3 +114,34 @@ class SHPFPSLabel: UILabel {
  #endif
  
  */
+
+
+
+
+struct LineHeightMultiple: ViewModifier {
+    var multiple: CGFloat
+
+    func body(content: Content) -> some View {
+        content
+            .overlay(GeometryReader { geometry in
+                Color.clear
+                    .preference(key: TextHeightPreferenceKey.self, value: geometry.size.height)
+            })
+            .onPreferenceChange(TextHeightPreferenceKey.self) { height in
+                content.lineSpacing(height * (multiple - 1))
+            }
+    }
+}
+
+struct TextHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
+extension View {
+    func lineHeightMultiple(_ multiple: CGFloat) -> some View {
+        self.modifier(LineHeightMultiple(multiple: multiple))
+    }
+}
